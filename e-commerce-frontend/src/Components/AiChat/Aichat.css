@@ -1,0 +1,100 @@
+/* Overall App Styling */
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    
+  }
+  .Aichat {
+    
+    display: inline; /* Allow centering elements */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+   
+  }
+   
+    
+  
+  
+  h1 {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  /* Conversation Container */
+  .conversation {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    height: 400px;
+    margin-left: 200px;
+    overflow-y: scroll; /* Enable scroll for long conversations */
+    background-color: white; /* Light background for better readability */
+  }
+  
+  /* Message Styling (Base) */
+  .message {
+    padding: 15px; /* Consistent padding for all messages */
+    border-radius: 5px;
+    margin-bottom: 10px; /* Reduce margin for tighter flow */
+    line-height: 1.5; /* Improve readability with line spacing */
+  
+  }
+  
+  /* User Message Styling */
+  .user {
+    background-color: #e0f2ff; /* Light blue for user messages */
+    color: #333;
+    text-align: left; /* Align user messages to the left */
+  }
+  
+  /* Model Message Styling */
+  .model {
+    background-color: #f5f5f5; /* Light gray for model messages */
+    color: #000;
+    text-align: right; /* Align model messages to the right */
+  }
+  
+  /* Clear Floats for Input Area (if needed) */
+  .input_message {
+    clear: both; /* Clear any potential floats affecting layout (optional) */
+    display: flex;
+    width: 70%;
+    height: 60px;
+    align-items: center;
+    margin-left: 200px;
+  }
+  
+  /* Input Field Styling */
+  .input_message input {
+    flex: 1; /* Allow input field to fill available space */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  /* Send Button Styling */
+  .aichat_button {
+    background-color: #ff5906; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 200px; /* Add margin for better separation */
+    margin-top: 10px;
+    margin-bottom: 50px;
+    width: 200px;
+  }
+  
+  /* Optional: Hover Effect for Button */
+  .aichat_button:hover {
+    background-color: #45a049;
+  }
+  
