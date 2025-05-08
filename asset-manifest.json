@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/ai_ecommerce/static/css/main.b700992d.css",
+    "main.js": "/ai_ecommerce/static/js/main.dfad1cda.js",
+    "static/media/auto-parts.jpeg": "/ai_ecommerce/static/media/auto-parts.a6c5e24a10c06f6d8c25.jpeg",
+    "static/media/banner_1.webp": "/ai_ecommerce/static/media/banner_1.c69502ec2527ecbb59b7.webp",
+    "static/media/logo_wolf.png": "/ai_ecommerce/static/media/logo_wolf.04f9ad00db184b1af624.png",
+    "static/media/People-packing.jpg": "/ai_ecommerce/static/media/People-packing.ef18998bb09f61b8305b.jpg",
+    "static/media/Car-parts.jpg": "/ai_ecommerce/static/media/Car-parts.c099ca3cc3b15a08c935.jpg",
+    "static/media/Various-Car-Parts.jpeg": "/ai_ecommerce/static/media/Various-Car-Parts.5103d82b524ab5e0a803.jpeg",
+    "index.html": "/ai_ecommerce/index.html",
+    "main.b700992d.css.map": "/ai_ecommerce/static/css/main.b700992d.css.map",
+    "main.dfad1cda.js.map": "/ai_ecommerce/static/js/main.dfad1cda.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b700992d.css",
+    "static/js/main.dfad1cda.js"
+  ]
+}
