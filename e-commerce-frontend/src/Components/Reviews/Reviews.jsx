@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Reviews.css";
 
 const LeftArrowIcon = () => (
@@ -60,6 +60,7 @@ const reviewsData = [
 
 const Reviews = () => {
 	const [startIdx, setStartIdx] = useState(0);
+	const intervalRef = useRef(null);
 	const visibleReviews = reviewsData.slice(startIdx, startIdx + 3);
 
 	const handlePrev = () => {
@@ -68,6 +69,13 @@ const Reviews = () => {
 	const handleNext = () => {
 		setStartIdx((prev) => (prev + 3 >= reviewsData.length ? 0 : prev + 1));
 	};
+
+	useEffect(() => {
+		intervalRef.current = setInterval(() => {
+			handleNext();
+		}, 3500);
+		return () => clearInterval(intervalRef.current);
+	}, [startIdx]);
 
 	return (
 		<section className="reviews_section">
