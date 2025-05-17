@@ -103,6 +103,36 @@ const Product = mongoose.model("Product", {
   },
 });
 
+// Schema for Orders
+const Order = mongoose.model("Order", {
+  cakeType: {
+    type: String,
+    required: true,
+  },
+  deliveryDate: {
+    type: Date,
+    required: true,
+  },
+  additionalItems: {
+    type: Array,
+    default: [],
+  },
+  comments: {
+    type: String,
+  },
+  userId: {
+    type: String,
+  },
+  orderDate: {
+    type: Date,
+    default: Date.now,
+  },
+  status: {
+    type: String,
+    default: 'pending'
+  }
+});
+
 app.get("/", (req, res) => {
   res.send("Root");
 });
@@ -242,6 +272,36 @@ app.post("/removeproduct", async (req, res) => {
   const product = await Product.findOneAndDelete({ id: req.body.id });
   console.log("Removed");
   res.json({success:true,name:req.body.name})
+});
+
+// Create an endpoint for submitting orders
+app.post('/submit-order', fetchuser, async (req, res) => {
+  try {
+    const order = new Order({
+      cakeType: req.body.cakeType,
+      deliveryDate: req.body.deliveryDate,
+      additionalItems: req.body.additionalItems,
+      comments: req.body.comments,
+      userId: req.user.id
+    });
+
+    await order.save();
+    res.json({success: true, orderId: order._id});
+  } catch (error) {
+    console.error('Order submission error:', error);
+    res.status(500).json({success: false, error: 'Failed to submit order'});
+  }
+});
+
+// Get user's orders
+app.get('/my-orders', fetchuser, async (req, res) => {
+  try {
+    const orders = await Order.find({userId: req.user.id}).sort({orderDate: -1});
+    res.json(orders);
+  } catch (error) {
+    console.error('Fetch orders error:', error);
+    res.status(500).json({error: 'Failed to fetch orders'});
+  }
 });
 
 app.listen(port, (error) => {

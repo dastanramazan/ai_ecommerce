@@ -1,0 +1,163 @@
+.pinata_section {
+  width: 100%;
+  background: #fff;
+  padding: 3rem 0 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pinata_title {
+  font-size: 2rem;
+  color: #d84316;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.pinata_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1100px;
+}
+.pinata_card {
+  background: #fff5f7;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px #ffd6e0aa;
+  padding: 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.pinata_card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 24px #ffd6e0cc;
+}
+.pinata_img {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  background: #eee;
+}
+.pinata_info {
+  text-align: center;
+}
+.pinata_name {
+  font-size: 1.2rem;
+  color: #d84316;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.pinata_desc {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.7rem;
+}
+.pinata_price {
+  font-size: 1.1rem;
+  color: #ff6b6b;
+  font-weight: 700;
+}
+
+/* Modal Styles */
+.pinata_modal_overlay {
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pinata_modal {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px #ffd6e0cc;
+  max-width: 420px;
+  width: 95vw;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: popIn 0.2s;
+}
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.pinata_modal_close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #d84316;
+  cursor: pointer;
+}
+.pinata_modal_img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+.pinata_modal_content {
+  width: 100%;
+  text-align: left;
+}
+.pinata_modal_title {
+  font-size: 1.3rem;
+  color: #d84316;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.pinata_modal_rating, .pinata_modal_weight, .pinata_modal_price {
+  font-size: 1.05rem;
+  color: #ff6b6b;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.pinata_modal_desc {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+.pinata_modal_ingredients, .pinata_modal_storage, .pinata_modal_shelf, .pinata_modal_nutrition, .pinata_modal_note {
+  font-size: 0.98rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+}
+.pinata_modal_order_btn {
+  margin-top: 1rem;
+  background: #ff6b6b;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pinata_modal_order_btn:hover {
+  background: #d84316;
+}
+
+@media (max-width: 700px) {
+  .pinata_grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .pinata_card {
+    padding: 1rem 0.5rem;
+  }
+  .pinata_modal {
+    padding: 1rem 0.5rem 1.5rem 0.5rem;
+  }
+}

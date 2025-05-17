@@ -1,35 +1,32 @@
 import React from "react";
 import "./Main.css";
 import hero_image from "../Assets/auto-parts.jpeg";
-// import hero_image from "../Assets/Movie_1.mov";
-// import hand_icon from "../Assets/hand_icon.png";
-// import arrow_icon from "../Assets/arrow.png";
+import OrderForm from "../OrderForm/OrderForm";
 
 const Main = () => {
   return (
-    
     <div className="main_page">
-     
-           
-      
-
       <div className="main_page_left">
-        <h2>GENUINE PARTS ONLY</h2>
-        <p>Find the parts</p>
-        {/* <p>parts for your car</p> */}
-        <p>that you need</p>
-            <div className="main_page_btn">
-                <div>CONTACT US 832 983 19 19</div>
-                
-            </div>
+        <div className="main_page_content">
+          <h2>FRESHLY BAKED DAILY</h2>
+          <p>Indulge in</p>
+          <p>Sweet Moments</p>
+          <div className="main_page_btns">
+            <a
+              href="https://wa.me/8329831919"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whatsapp_btn"
+            >
+              WhatsApp Us
+            </a>
+            <a href="#about" className="aboutus_btn">About Us</a>
+          </div>
+        </div>
       </div>
-            <div className="image_right">
-              <img src={hero_image} alt="hero" /> 
-            </div> 
-            
-           
-            
-
+      <div className="main_page_right">
+        <OrderForm />
+      </div>
     </div>
   );
 };

@@ -30,15 +30,14 @@ const ProductDisplay = (props) => {
         <div className="product_display_right_prices">
           <div className="product_display_right_price_old">${product.old_price}</div>
           <div className="product_display_right_price_new">${product.new_price}</div>
-        </div>
-        <div className="product_display_right_description">
-        These premium brake pads are designed to provide superior stopping power and fade resistance for [car type, e.g., sports cars, performance vehicles].
-         They are typically installed on the wheels and clamp down on the rotors to slow down the car.
+        </div>        <div className="product_display_right_description">
+        Our delicious {product.category} are made fresh daily with premium ingredients. Perfect for any celebration or special moment.
+        Each item is crafted with care to ensure the perfect taste and presentation.
         </div>
        
         <button onClick={()=>{addToCart(product.id)}}>ADD TO CART</button>
-        <p className="product_display_right_category"><span>Category :</span> Fluids, Break Pads, Ceramic</p>
-        <p className="product_display_right_category"><span>Tags :</span> New, Latest</p>
+        <p className="product_display_right_category"><span>Category :</span> {product.category}</p>
+        <p className="product_display_right_category"><span>Tags :</span> Fresh Baked, Homemade</p>
       </div>
     </div>
   );

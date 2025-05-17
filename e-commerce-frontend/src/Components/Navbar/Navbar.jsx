@@ -20,16 +20,14 @@ const Navbar = () => {
 
   return (
     <div className='nav'>
-      <Link to='/' onClick={()=>{setMenu("shop")}} style={{ textDecoration: 'none' }} className="nav-logo">
-        <img src={logo} alt="logo" />
-        <p>CAR PARTS</p>
+      <Link to='/' onClick={()=>{setMenu("shop")}} style={{ textDecoration: 'none' }} className="nav-logo">        <img src={logo} alt="logo" />
+        <p>Enjoy the Cakes</p>
       </Link>
-      <img onClick={dropdown_toggle} className='nav-dropdown' src={nav_dropdown} alt="" />
-      <ul ref={menuRef} className="nav-menu">
+      <img onClick={dropdown_toggle} className='nav-dropdown' src={nav_dropdown} alt="" />      <ul ref={menuRef} className="nav-menu">
         <li onClick={()=>{setMenu("shop")}}><Link to='/' style={{ textDecoration: 'none' }}>Home</Link>{menu==="shop"?<hr/>:<></>}</li>
-        <li onClick={()=>{setMenu("engine")}}><Link to='/engine' style={{ textDecoration: 'none' }}>Engine</Link>{menu==="engine"?<hr/>:<></>}</li>
-        <li onClick={()=>{setMenu("brakes")}}><Link to='/brakes' style={{ textDecoration: 'none' }}>Brakes</Link>{menu==="brakes"?<hr/>:<></>}</li>
-        <li onClick={()=>{setMenu("fluids")}}><Link to='/fluids' style={{ textDecoration: 'none' }}>Fluids</Link>{menu==="fluids"?<hr/>:<></>}</li>
+        <li onClick={()=>{setMenu("cakes")}}><Link to='/cakes' style={{ textDecoration: 'none' }}>Cakes</Link>{menu==="cakes"?<hr/>:<></>}</li>
+        <li onClick={()=>{setMenu("pinata")}}><Link to='/pinata' style={{ textDecoration: 'none' }}>Pinata</Link>{menu==="pinata"?<hr/>:<></>}</li>
+        <li onClick={()=>{setMenu("sugarprints")}}><Link to='/sugarprints' style={{ textDecoration: 'none' }}>Sugar Prints</Link>{menu==="sugarprints"?<hr/>:<></>}</li>
         <li onClick={()=>{setMenu("aichat")}}><Link to='/aichat' style={{ textDecoration: 'none' }}>AI Helper</Link>{menu==="aichat"?<hr/>:<></>}</li>
       </ul>
       <div className="nav-login-cart">

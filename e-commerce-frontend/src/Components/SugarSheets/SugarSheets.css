@@ -1,0 +1,150 @@
+/* SugarSheets.css */
+.sugar_section {
+  width: 100%;
+  background: #fff;
+  padding: 3rem 0 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sugar_title {
+  font-size: 2rem;
+  color: #d84316;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.sugar_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1100px;
+}
+.sugar_card {
+  background: #fff5f7;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px #ffd6e0aa;
+  padding: 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.sugar_card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 24px #ffd6e0cc;
+}
+.sugar_img {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  background: #eee;
+}
+.sugar_info {
+  text-align: center;
+}
+.sugar_name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #b71c1c;
+  margin-bottom: 0.5rem;
+}
+.sugar_desc {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+.sugar_price {
+  font-size: 1.1rem;
+  color: #d84316;
+  font-weight: 600;
+}
+.sugar_modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.sugar_modal {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 32px #ffd6e0cc;
+  padding: 2rem 2.5rem;
+  max-width: 480px;
+  width: 95vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sugar_modal_close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #d84316;
+  cursor: pointer;
+}
+.sugar_modal_img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 1rem;
+  margin-bottom: 1.2rem;
+  object-fit: cover;
+  background: #eee;
+}
+.sugar_modal_content {
+  width: 100%;
+}
+.sugar_modal_content h3 {
+  color: #b71c1c;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+.sugar_modal_content p {
+  color: #444;
+  margin-bottom: 0.7rem;
+}
+.sugar_modal_list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.2rem;
+}
+.sugar_modal_list li {
+  font-size: 0.98rem;
+  margin-bottom: 0.3rem;
+}
+.sugar_modal_order {
+  background: #d84316;
+  color: #fff;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sugar_modal_order:hover {
+  background: #b71c1c;
+}
+@media (max-width: 600px) {
+  .sugar_modal {
+    padding: 1rem 0.5rem;
+  }
+  .sugar_grid {
+    gap: 1rem;
+  }
+}
