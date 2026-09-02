@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./AddProduct.css";
 import upload_area from "../Assets/upload_area.svg";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000";
 
 const AddProduct = () => {
 
@@ -22,10 +23,11 @@ const AddProduct = () => {
     let formData = new FormData();
     formData.append('product', image);
     
-    await fetch('http://localhost:4000/upload', {
+    await fetch(`${API_URL}/upload`, {
       method: 'POST',
       headers: {
         Accept:'application/json',
+        'auth-token': localStorage.getItem('auth-token'),
       },
       body: formData,
     })
@@ -35,11 +37,12 @@ const AddProduct = () => {
     if (dataObj.success) {
       product.image = dataObj.image_url;
       console.log(product);
-      await fetch('http://localhost:4000/addproduct', {
+      await fetch(`${API_URL}/addproduct`, {
       method: 'POST',
       headers: {
         Accept:'application/json',
         'Content-Type':'application/json',
+        'auth-token': localStorage.getItem('auth-token'),
       },
       body: JSON.stringify(product),
     })
