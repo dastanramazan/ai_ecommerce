@@ -9,6 +9,11 @@ const Product = () => {
   const {products} = useContext(ShopContext);
   const {productId} = useParams();
   const product = products.find((e)=>e.id === Number(productId));
+
+  if (!product) {
+    return <div>{products.length === 0 ? "Loading product..." : "Product not found."}</div>;
+  }
+
   return (
     <div>
       <Breadcrums product={product}/>
