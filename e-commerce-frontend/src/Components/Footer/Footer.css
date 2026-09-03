@@ -4,17 +4,20 @@
     justify-content: center;
     align-items: center;
     gap: 25px;
-    padding-top: 20px;
-    background:  linear-gradient(360deg, #23a6d2, #e1ffea22 60%);
+    padding: 40px 20px 0;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-top: 1px solid var(--glass-border);
 }
 .footer-logo{
     display: flex;
     align-items: center;
     gap: 15px;
-    
+
 }
 .footer-logo p{
-    color: #383838;
+    color: var(--text-primary);
     font-size: 30px;
     font-weight: 700;
 }
@@ -28,11 +31,15 @@
     justify-content: center;
     list-style: none;
     gap: 40px;
-    color: #252525;
+    color: var(--text-secondary);
     font-size: 16px;
 }
 .footer_links li{
     cursor: pointer;
+    transition: color 0.2s;
+}
+.footer_links li:hover{
+    color: var(--accent-soft);
 }
 .footer_social_icons{
     display: flex;
@@ -41,14 +48,17 @@
 .footer_icons_container{
     padding: 10px;
     padding-bottom: 6px;
-    background: #fbfbfb;
-    border: 1px solid #ebebeb;
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border);
     border-radius: 25px;
+    transition: border-color 0.2s;
+}
+.footer_icons_container:hover{
+    border-color: var(--accent-glow);
 }
 .footer_icons_container img{
     width: 25px;
-    
-    
+    filter: invert(1) brightness(1.6);
 }
 .footer_copyright{
     display: flex;
@@ -57,16 +67,16 @@
     gap: 20px;
     width: 100%;
     margin-bottom: 30px;
-    color: #1a1a1a;
+    color: var(--text-muted);
     font-size: 16px;
-   
+
 }
 .footer_copyright hr{
     width: 80%;
     border: none;
     border-radius: 10px;
-    height: 2px;
-    background: #1a1a1a;
+    height: 1px;
+    background: var(--glass-border);
 }
 @media(max-width:800px){
     .footer-links{

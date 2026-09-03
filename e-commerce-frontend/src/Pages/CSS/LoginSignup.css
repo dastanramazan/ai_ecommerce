@@ -1,16 +1,21 @@
 .loginsignup{
     width: 100%;
     min-height: 90vh;
-    background: #fce3fe;
     padding-top: 100px;
 }
 .loginsignup-container{
     width: 90%;
     max-width: 550px;
-    background: white;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 20px;
     margin: auto;
     padding: 30px 40px;
     box-sizing: border-box;
+    color: var(--text-primary);
 }
 .loginsignup-container h1{
     margin: 15px 0px;
@@ -25,40 +30,50 @@
     height: 60px;
     width: 100%;
     padding-left: 20px;
-    border: 1px solid #c9c9c9;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    background: var(--glass-bg-strong);
     outline: none;
-    color: #5c5c5c;
+    color: var(--text-primary);
     font-size: 18px;
     box-sizing: border-box;
+}
+.loginsignup-fields input::placeholder{
+    color: var(--text-muted);
 }
 .loginsignup-container button{
     width: 100%;
     height: 60px;
     color: white;
-    background: #ff4141;
+    background: var(--accent);
     margin-top: 30px;
     border: none;
     font-size: 22px;
     font-weight: 500;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 8px;
+    transition: box-shadow 0.25s;
+}
+.loginsignup-container button:hover{
+    box-shadow: 0 0 24px var(--accent-glow);
 }
 .loginsignup-login{
     margin-top: 20px;
-    color: #5c5c5c;
+    color: var(--text-secondary);
     font-size: 16px;
     font-weight: 500;
 }
 .loginsignup-login span{
-    color: #ff4141;
+    color: var(--accent-soft);
     font-weight: 600;
+    cursor: pointer;
 }
 .loginsignup-agree{
     display: flex;
     align-items: center;
     margin-top: 18px;
     gap: 10px;
-    color: #5c5c5c;
+    color: var(--text-secondary);
     font-size: 15px;
     font-weight: 500;
 }

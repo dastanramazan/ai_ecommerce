@@ -6,7 +6,7 @@
    margin-bottom: 100px;
 }
 .new_collections h1{
-    color: #171717;
+    color: var(--text-primary);
     font-size: 40px;
     font-weight: 600;
 }
@@ -14,7 +14,7 @@
     width: 150px;
     height: 4px;
     border-radius: 10px;
-    background: #23a6d2;
+    background: var(--accent);
   }
 .collections{
     display: flex;

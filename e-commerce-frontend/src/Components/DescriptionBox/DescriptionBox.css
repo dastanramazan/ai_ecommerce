@@ -1,5 +1,6 @@
 .description_box{
     margin: 120px 170px;
+    color: var(--text-secondary);
 }
 .description_box_navigator{
     display: flex;
@@ -12,17 +13,27 @@
     font-weight: 600;
     width: 200px;
     height: 70px;
-    border: 1px solid #000000;
+    color: var(--text-primary);
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-bottom: none;
 }
 .description_box_nav_box.fade{
-    background: #FBFBFB;
-    color: #000000;
+    background: var(--glass-bg);
+    color: var(--text-muted);
 }
 .description_box_description{
     display: flex;
     flex-direction: column;
     gap: 25px;
-    border: 1px solid #000000;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 0 16px 16px 16px;
+    box-shadow: var(--glass-shadow);
     padding: 48px;
     padding-bottom: 70px;
 }

@@ -20,81 +20,93 @@
   h1 {
     text-align: center;
     margin: 20px 0;
+    color: var(--text-primary);
   }
-  
+
   /* Conversation Container */
   .conversation {
     display: flex;
     flex-direction: column;
     width: 70%;
     margin: 10px 0;
-    border: 2px solid #ddd;
-    border-radius: 5px;
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
     padding: 10px;
     height: 400px;
     margin-left: 200px;
     overflow-y: scroll; /* Enable scroll for long conversations */
-    background-color: white; /* Light background for better readability */
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-shadow);
+    scrollbar-color: var(--glass-border) transparent;
   }
-  
+  .conversation::-webkit-scrollbar {
+    width: 8px;
+  }
+  .conversation::-webkit-scrollbar-thumb {
+    background: var(--glass-border);
+    border-radius: 8px;
+  }
+
   /* Message Styling (Base) */
   .message {
     padding: 15px; /* Consistent padding for all messages */
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 10px; /* Reduce margin for tighter flow */
     line-height: 1.5; /* Improve readability with line spacing */
-  
+
   }
-  
+
   /* User Message Styling */
   .user {
-    background-color: #e0f2ff; /* Light blue for user messages */
-    color: #333;
+    background: rgba(255, 65, 65, 0.18);
+    border: 1px solid var(--accent-glow);
+    color: var(--text-primary);
     text-align: left; /* Align user messages to the left */
   }
-  
+
   /* Model Message Styling */
   .model {
-    background-color: #f5f5f5; /* Light gray for model messages */
-    color: #000;
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
     text-align: right; /* Align model messages to the right */
   }
-  
-  /* Clear Floats for Input Area (if needed) */
+
+  /* Input Field Styling - .input_message is the <input> itself, not a wrapper */
   .input_message {
-    clear: both; /* Clear any potential floats affecting layout (optional) */
-    display: flex;
+    display: block;
     width: 70%;
     height: 60px;
-    align-items: center;
     margin-left: 200px;
-  }
-  
-  /* Input Field Styling */
-  .input_message input {
-    flex: 1; /* Allow input field to fill available space */
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    background: var(--glass-bg-strong);
+    color: var(--text-primary);
     padding: 10px;
     font-size: 16px;
   }
-  
+  .input_message::placeholder {
+    color: var(--text-muted);
+  }
+
   /* Send Button Styling */
   .aichat_button {
-    background-color: #ff5906; 
+    background-color: var(--accent);
     color: white;
     border: none;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     margin-left: 200px; /* Add margin for better separation */
     margin-top: 10px;
     margin-bottom: 50px;
     width: 200px;
+    transition: box-shadow 0.25s;
   }
-  
+
   /* Optional: Hover Effect for Button */
   .aichat_button:hover {
-    background-color: #45a049;
+    box-shadow: 0 0 24px var(--accent-glow);
   }
-  

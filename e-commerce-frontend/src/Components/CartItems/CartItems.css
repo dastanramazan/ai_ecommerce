@@ -1,9 +1,10 @@
 .cart_items{
     margin: 100px 10%;
+    color: var(--text-primary);
 }
 .cart_items hr{
-    height: 2px;
-    background: #e2e2e2;
+    height: 1px;
+    background: var(--glass-border);
     border: 0;
 }
 .cart_items_format_main{
@@ -12,7 +13,7 @@
     align-items: center;
     gap: 50px;
     padding: 20px 0px;
-    color: #23a6d2;
+    color: var(--accent-soft);
     font-size: 16px;
     font-weight: 700;
 }
@@ -22,6 +23,9 @@
 }
 .cart_items_product_icon{
     height: 55px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px;
 }
 .cart_items_remove_icon{
     width: 12px;
@@ -31,8 +35,10 @@
 .cart_items_quantity{
     width: 55px;
     height: 45px;
-    border: 2px solid #ebebeb;
-    background: #fff;
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    background: var(--glass-bg-strong);
+    color: var(--text-primary);
 }
 .cart_items_down{
     display: flex;
@@ -55,12 +61,16 @@
     height: 50px;
     outline: none;
     border: none;
-    background: #ff5a5a;
+    background: var(--accent);
     color: #fff;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 8px;
+    transition: box-shadow 0.25s;
+}
+.cart_items_total button:hover{
+    box-shadow: 0 0 24px var(--accent-glow);
 }
 .cart_items_promocode{
     flex: 1;
@@ -68,7 +78,7 @@
     font-weight: 500;
 }
 .cart_items_promocode p{
-    color: #555;
+    color: var(--text-secondary);
 }
 .cart_items_promobox{
     display: flex;
@@ -77,12 +87,17 @@
     width: 400px;
     margin-top: 15px;
     height: 50px;
-    background: #eaeaea;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
 }
 .cart_items_promobox input{
     border: none;
     outline: none;
     background: transparent;
+    color: var(--text-primary);
     font-size: 16px;
     flex: 1;
     height: 100%;
@@ -92,10 +107,10 @@
     width: 130px;
     height: 100%;
     font-size: 16px;
-    background: #ff5a5a;
+    background: var(--accent);
     color: white;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 0 8px 8px 0;
     border: none;
 }
 @media(max-width:1280px){

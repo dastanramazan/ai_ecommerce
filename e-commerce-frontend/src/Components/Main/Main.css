@@ -1,6 +1,5 @@
 .main_page {
-    min-height: 100vh;    
-    background: linear-gradient(180deg, #ffd6e0, #fff5f7 100%);
+    min-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,6 +19,13 @@
 
 .main_page_content {
     max-width: 500px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--glass-shadow);
+    padding: 2.5rem;
 }
 
 .main_page_right {
@@ -31,15 +37,15 @@
 
 /* -------------------Left Sidebar Writings -------------------*/
 .main_page_left h2{
-    color: #d84316;
+    color: var(--accent-soft);
     font-size: 18px;
     margin-bottom: 10px;
-    
+
 }
 
 .main_page_left p{
-    color: #171717;
-    font-size: 60px;   
+    color: var(--text-primary);
+    font-size: 60px;
     font-weight: 700;
 }
 
@@ -64,8 +70,10 @@
   }
 .image_right img {
     width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     transition: 0.5s;
 
 }
@@ -94,18 +102,21 @@
 }
 
 .aboutus_btn {
-  background: #fff;
-  color: #d84316;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--text-primary);
   padding: 0.8rem 1.8rem;
   border-radius: 30px;
   font-size: 1.08rem;
   font-weight: 700;
   text-decoration: none;
-  border: 2px solid #d84316;
-  transition: background 0.2s, color 0.2s;
+  border: 2px solid var(--glass-border);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 .aboutus_btn:hover {
-  background: #d84316;
+  background: var(--accent);
+  border-color: var(--accent);
   color: #fff;
 }
 
