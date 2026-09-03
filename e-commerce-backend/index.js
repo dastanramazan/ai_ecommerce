@@ -9,6 +9,7 @@ const bcrypt = require("bcryptjs");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
+const { body, validationResult } = require("express-validator");
 const { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } = require("@google/generative-ai");
 
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -24,6 +25,24 @@ if (!process.env.MONGODB_URI) {
 app.use(express.json());
 app.use(cors());
 
+// Runs any validation chains attached to a route and returns a 400 with a
+// single combined message if any of them failed, matching the existing
+// { success: false, errors: "..." } shape the frontend already expects.
+const handleValidation = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      success: false,
+      errors: errors.array().map((e) => e.msg).join(", "),
+    });
+  }
+  next();
+};
+
+// Forwards a rejected promise from an async route handler to Express's
+// error-handling middleware instead of crashing the process or hanging.
+const asyncHandler = (fn) => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
+
 // Database Connection With MongoDB
 mongoose.connect(process.env.MONGODB_URI).catch((error) => {
   console.error("MongoDB connection error:", error.message);
@@ -37,7 +56,16 @@ const storage = multer.diskStorage({
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
     }
 })
-const upload = multer({storage: storage})
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 },
+  fileFilter: (req, file, cb) => {
+    if (!file.mimetype.startsWith("image/")) {
+      return cb(new Error("Only image uploads are allowed"));
+    }
+    cb(null, true);
+  },
+})
 app.use('/images', express.static('upload/images'));
 
 // MiddleWare to fetch user from database
@@ -176,8 +204,12 @@ app.post("/upload", fetchadmin, upload.single('product'), (req, res) => {
 })
 
 //Create an endpoint at ip/login for login the user and giving auth-token
-app.post('/login', async (req, res) => {
-  console.log("Login");
+app.post('/login',
+  body('email').isEmail().withMessage('A valid email is required'),
+  body('password').notEmpty().withMessage('Password is required'),
+  handleValidation,
+  asyncHandler(async (req, res) => {
+    console.log("Login");
     let success = false;
     let user = await Users.findOne({ email: req.body.email });
     if (user) {
@@ -200,11 +232,17 @@ app.post('/login', async (req, res) => {
     else {
         return res.status(400).json({success: success, errors: "please try with correct email/password"})
     }
-})
+  })
+)
 
 //Create an endpoint at ip/auth for regestring the user in data base & sending token
-app.post('/signup', async (req, res) => {
-  console.log("Sign Up");
+app.post('/signup',
+  body('username').trim().notEmpty().withMessage('Name is required'),
+  body('email').isEmail().withMessage('A valid email is required'),
+  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
+  handleValidation,
+  asyncHandler(async (req, res) => {
+    console.log("Sign Up");
         let success = false;
         let check = await Users.findOne({ email: req.body.email });
         if (check) {
@@ -231,39 +269,46 @@ app.post('/signup', async (req, res) => {
         const token = jwt.sign(data, JWT_SECRET);
         success = true;
         res.json({ success, token })
-    })
+  })
+)
 
-app.get("/allproducts", async (req, res) => {
+app.get("/allproducts", asyncHandler(async (req, res) => {
 	let products = await Product.find({});
   console.log("All Products");
     res.send(products);
-});
+}));
 
-app.get("/newcollections", async (req, res) => {
+app.get("/newcollections", asyncHandler(async (req, res) => {
 	let products = await Product.find({});
   let arr = products.slice(1).slice(-8);
   console.log("New Collections");
   res.send(arr);
-});
+}));
 
-app.get("/popularinwomen", async (req, res) => {
+app.get("/popularinwomen", asyncHandler(async (req, res) => {
 	let products = await Product.find({});
   let arr = products.splice(0,  4);
   console.log("Popular In Women");
   res.send(arr);
-});
+}));
 
 //Create an endpoint for saving the product in cart
-app.post('/addtocart', fetchuser, async (req, res) => {
+app.post('/addtocart', fetchuser,
+  body('itemId').isInt({ min: 0, max: 299 }).withMessage('itemId must be a valid product index'),
+  handleValidation,
+  asyncHandler(async (req, res) => {
 	console.log("Add Cart");
     let userData = await Users.findOne({_id:req.user.id});
     userData.cartData[req.body.itemId] += 1;
     await Users.findOneAndUpdate({_id:req.user.id}, {cartData:userData.cartData});
     res.send("Added")
-  })
+  }))
 
   //Create an endpoint for saving the product in cart
-app.post('/removefromcart', fetchuser, async (req, res) => {
+app.post('/removefromcart', fetchuser,
+  body('itemId').isInt({ min: 0, max: 299 }).withMessage('itemId must be a valid product index'),
+  handleValidation,
+  asyncHandler(async (req, res) => {
 	console.log("Remove Cart");
     let userData = await Users.findOne({_id:req.user.id});
     if(userData.cartData[req.body.itemId]!=0)
@@ -272,18 +317,25 @@ app.post('/removefromcart', fetchuser, async (req, res) => {
     }
     await Users.findOneAndUpdate({_id:req.user.id}, {cartData:userData.cartData});
     res.send("Removed");
-  })
+  }))
 
   //Create an endpoint for saving the product in cart
-app.post('/getcart', fetchuser, async (req, res) => {
+app.post('/getcart', fetchuser, asyncHandler(async (req, res) => {
   console.log("Get Cart");
   let userData = await Users.findOne({_id:req.user.id});
   res.json(userData.cartData);
 
-  })
+  }))
 
 
-app.post("/addproduct", fetchadmin, async (req, res) => {
+app.post("/addproduct", fetchadmin,
+  body('name').trim().notEmpty().withMessage('name is required'),
+  body('image').trim().notEmpty().withMessage('image is required'),
+  body('category').trim().notEmpty().withMessage('category is required'),
+  body('new_price').isFloat({ min: 0 }).withMessage('new_price must be a positive number'),
+  body('old_price').isFloat({ min: 0 }).withMessage('old_price must be a positive number'),
+  handleValidation,
+  asyncHandler(async (req, res) => {
   let products = await Product.find({});
   let id;
   if (products.length>0) {
@@ -305,17 +357,25 @@ app.post("/addproduct", fetchadmin, async (req, res) => {
   await product.save();
   console.log("Saved");
   res.json({success:true,name:req.body.name})
-});
+}));
 
-app.post("/removeproduct", fetchadmin, async (req, res) => {
+app.post("/removeproduct", fetchadmin,
+  body('id').isInt().withMessage('id must be a number'),
+  handleValidation,
+  asyncHandler(async (req, res) => {
   const product = await Product.findOneAndDelete({ id: req.body.id });
   console.log("Removed");
   res.json({success:true,name:req.body.name})
-});
+}));
 
 // Create an endpoint for submitting orders
-app.post('/submit-order', fetchuser, async (req, res) => {
-  try {
+app.post('/submit-order', fetchuser,
+  body('cakeType').trim().notEmpty().withMessage('cakeType is required'),
+  body('deliveryDate').isISO8601().withMessage('deliveryDate must be a valid date'),
+  body('additionalItems').optional().isArray().withMessage('additionalItems must be an array'),
+  body('comments').optional().isString().isLength({ max: 1000 }).withMessage('comments must be 1000 characters or fewer'),
+  handleValidation,
+  asyncHandler(async (req, res) => {
     const order = new Order({
       cakeType: req.body.cakeType,
       deliveryDate: req.body.deliveryDate,
@@ -326,22 +386,14 @@ app.post('/submit-order', fetchuser, async (req, res) => {
 
     await order.save();
     res.json({success: true, orderId: order._id});
-  } catch (error) {
-    console.error('Order submission error:', error);
-    res.status(500).json({success: false, error: 'Failed to submit order'});
-  }
-});
+  })
+)
 
 // Get user's orders
-app.get('/my-orders', fetchuser, async (req, res) => {
-  try {
-    const orders = await Order.find({userId: req.user.id}).sort({orderDate: -1});
-    res.json(orders);
-  } catch (error) {
-    console.error('Fetch orders error:', error);
-    res.status(500).json({error: 'Failed to fetch orders'});
-  }
-});
+app.get('/my-orders', fetchuser, asyncHandler(async (req, res) => {
+  const orders = await Order.find({userId: req.user.id}).sort({orderDate: -1});
+  res.json(orders);
+}))
 
 // AI chatbot: kept server-side so the Gemini API key never reaches the browser.
 const CHAT_MODEL_NAME = "gemini-1.5-pro-latest";
@@ -364,11 +416,11 @@ const CHAT_SEED_HISTORY = [
   { role: "model", parts: [{ text: "The delivery time for your order depends on several factors, including:\n\n* **Shipping method:** We offer various shipping options, including standard, expedited, and overnight. Faster shipping methods will naturally result in quicker delivery times. \n* **Availability of the items:** If all items are in stock, your order will typically ship within 1-2 business days. \n* **Destination:** Delivery times vary depending on the distance between our warehouse and your shipping address. \n\nTo provide you with a more accurate estimate, I'd need some additional information:\n\n* **The specific items you ordered:** Knowing the items helps determine if they're in stock and their shipping size/weight.\n* **Your shipping address (city and state):** This allows me to estimate the distance and transit time.\n* **The chosen shipping method:**  Knowing your preferred shipping speed helps calculate the expected delivery timeframe. \n\nWith this information, I can provide you with a more precise estimate of when your order will arrive." }] },
 ];
 
-app.post("/api/chat", async (req, res) => {
+app.post("/api/chat",
+  body('message').trim().notEmpty().withMessage('message is required').isLength({ max: 2000 }).withMessage('message must be 2000 characters or fewer'),
+  handleValidation,
+  asyncHandler(async (req, res) => {
   const userMessage = req.body.message;
-  if (!userMessage) {
-    return res.status(400).json({ error: "message is required" });
-  }
   if (!process.env.GEMINI_API_KEY) {
     return res.status(503).json({ error: "AI chat is not configured on the server" });
   }
@@ -396,6 +448,21 @@ app.post("/api/chat", async (req, res) => {
     console.error("Chat error:", error);
     res.status(500).json({ error: "Failed to generate response" });
   }
+}))
+
+// 404 for anything that didn't match a route above
+app.use((req, res) => {
+  res.status(404).json({ success: false, error: "Route not found" });
+});
+
+// Centralized error handler: catches multer errors and anything an
+// asyncHandler-wrapped route forwarded, and always responds with the same shape.
+app.use((err, req, res, next) => {
+  console.error(err);
+  if (err instanceof multer.MulterError || /image/i.test(err.message || "")) {
+    return res.status(400).json({ success: false, error: err.message });
+  }
+  res.status(err.status || 500).json({ success: false, error: err.message || "Internal server error" });
 });
 
 app.listen(port, (error) => {
