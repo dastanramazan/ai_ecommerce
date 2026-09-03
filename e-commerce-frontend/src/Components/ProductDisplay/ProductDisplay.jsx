@@ -31,13 +31,12 @@ const ProductDisplay = (props) => {
           <div className="product_display_right_price_old">${product.old_price}</div>
           <div className="product_display_right_price_new">${product.new_price}</div>
         </div>        <div className="product_display_right_description">
-        Our delicious {product.category} are made fresh daily with premium ingredients. Perfect for any celebration or special moment.
-        Each item is crafted with care to ensure the perfect taste and presentation.
+        A quality {product.category} part checked for fitment and reliability. Built to keep your vehicle running safely.
         </div>
-       
+
         <button onClick={()=>{addToCart(product.id)}}>ADD TO CART</button>
         <p className="product_display_right_category"><span>Category :</span> {product.category}</p>
-        <p className="product_display_right_category"><span>Tags :</span> Fresh Baked, Homemade</p>
+        <p className="product_display_right_category"><span>Tags :</span> Genuine Part, Quality Checked</p>
       </div>
     </div>
   );

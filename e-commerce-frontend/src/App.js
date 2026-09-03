@@ -5,7 +5,7 @@ import Cart from "./Pages/Cart";
 import Product from "./Pages/Product";
 import Footer from "./Components/Footer/Footer";
 import ShopCategory from "./Pages/ShopCategory";
-import banner_1 from "./Components/Assets/banners/banner_1.webp";
+import banner_1 from "./Components/Assets/banners/Car-Parts-scaled.jpg";
 import banner_2 from "./Components/Assets/banners/Car-parts.jpg";
 import banner_3 from "./Components/Assets/banners/Various-Car-Parts.jpeg";
 import LoginSignup from "./Pages/LoginSignup";
@@ -19,9 +19,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Shop gender="all" />} />
-          <Route path="/cakes" element={<ShopCategory banner={banner_1} category="cakes" />} />
-          <Route path="/pinata" element={<ShopCategory banner={banner_2} category="pinata" />} />
-          <Route path="/sugarprints" element={<ShopCategory banner={banner_3} category="sugarprints" />} />
+          <Route path="/brakes" element={<ShopCategory banner={banner_1} category="brakes" />} />
+          <Route path="/engine" element={<ShopCategory banner={banner_2} category="engine" />} />
+          <Route path="/fluids" element={<ShopCategory banner={banner_3} category="fluids" />} />
           <Route path="/aichat" element={<Aichat/>} />
           <Route path='/product' element={<Product />}>
             <Route path=':productId' element={<Product />} />

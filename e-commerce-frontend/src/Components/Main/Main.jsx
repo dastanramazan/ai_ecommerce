@@ -1,16 +1,15 @@
 import React from "react";
 import "./Main.css";
 import hero_image from "../Assets/auto-parts.jpeg";
-import OrderForm from "../OrderForm/OrderForm";
 
 const Main = () => {
   return (
     <div className="main_page">
       <div className="main_page_left">
         <div className="main_page_content">
-          <h2>FRESHLY BAKED DAILY</h2>
-          <p>Indulge in</p>
-          <p>Sweet Moments</p>
+          <h2>QUALITY PARTS, DAILY</h2>
+          <p>Genuine Parts,</p>
+          <p>Trusted Fit</p>
           <div className="main_page_btns">
             <a
               href="https://wa.me/8329831919"
@@ -24,8 +23,8 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div className="main_page_right">
-        <OrderForm />
+      <div className="main_page_right image_right">
+        <img src={hero_image} alt="Car parts" />
       </div>
     </div>
   );

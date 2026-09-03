@@ -33,27 +33,27 @@ const RightArrowIcon = () => (
 const reviewsData = [
 	{
 		name: "Anna K.",
-		text: "The cake was absolutely stunning and delicious! Everyone at the party loved it. Will definitely order again!",
+		text: "The brake pads fit perfectly and shipped fast. Braking feels so much smoother now!",
 		rating: 5,
 	},
 	{
 		name: "Michael S.",
-		text: "Ordered a custom piñata and sugar prints for my son's birthday. The quality and service were top-notch!",
+		text: "Ordered an oil filter and engine oil for my truck. Genuine parts, exactly as described.",
 		rating: 5,
 	},
 	{
 		name: "Emily R.",
-		text: "Beautiful, fresh, and delivered on time. The team was so helpful with my special requests. Highly recommend!",
+		text: "Great prices and the team helped me find the right part for my exact model. Highly recommend!",
 		rating: 5,
 	},
 	{
 		name: "David P.",
-		text: "The best bakery in town! The cake was moist and the design was exactly as I wanted.",
+		text: "Best auto parts shop I've ordered from. Fast delivery and everything arrived well packaged.",
 		rating: 5,
 	},
 	{
 		name: "Sara L.",
-		text: "Amazing customer service and the sugar prints were a huge hit at our event!",
+		text: "Amazing customer service - they answered all my questions about compatibility before I ordered.",
 		rating: 5,
 	},
 ];

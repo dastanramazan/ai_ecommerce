@@ -5,7 +5,7 @@ import Item from '../Item/Item'
 const Popular = (props) => {
   return (
     <div className='popular'>      
-    <h1>POPULAR TREATS</h1>
+    <h1>POPULAR PARTS</h1>
       <hr />
       <div className="popular_item">
         {props.data.map((item,i)=>{
