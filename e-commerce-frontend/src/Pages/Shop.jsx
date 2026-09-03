@@ -4,9 +4,6 @@ import Popular from '../Components/Popular/Popular'
 import Offers from '../Components/Offers/Offers'
 import NewsLetter from '../Components/NewsLetter/NewsLetter'
 import Reviews from '../Components/Reviews/Reviews'
-import Cakes from '../Components/Cakes/Cakes'
-import Pinata from '../Components/Pinata/Pinata'
-import SugarSheets from '../Components/SugarSheets/SugarSheets'
 
 const Shop = () => {
 
@@ -31,9 +28,6 @@ const Shop = () => {
     <div>
       <Main/>
       <Reviews/>
-      <Cakes/>
-      <Pinata/>
-      <SugarSheets/>
       <Popular data={popular}/>
       <Offers/>
       <NewsLetter/>

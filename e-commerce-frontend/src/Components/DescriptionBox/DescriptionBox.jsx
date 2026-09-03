@@ -8,17 +8,14 @@ const DescriptionBox = () => {
         <div className="description_box_nav_box">Description</div>
         <div className="description_box_nav_box fade">Reviews (122)</div>
       </div>
-      <div className="description_box_description">        <p>          Welcome to as, and Sweet Delights, your premier destination for celebration essentials. 
-          Our bakery specializes in creating stunning cakes, unique pinatstom sugar prints 
-          that make every celebration unforgettable. Each creation is handcrafted with passion and 
-          attention to detail, ensuring your special moments are truly magical.
+      <div className="description_box_description">        <p>          Welcome to your trusted destination for quality car parts. We stock genuine and
+          high-performance components for brakes, engines, and fluids, sourced from reputable
+          brands to keep your vehicle running safely and reliably.
         </p>
         <p>
-          We offer a delightful range of products perfect for any celebration - from stunning 
-          birthday cakes to colorful pinatas filled with surprises, and custom sugar prints 
-          that add a personal touch to your desserts. Our artisans combine traditional craftsmanship 
-          with modern creativity to bring your celebration visions to life.
-          with relevant information.
+          Every part in our catalog is checked for fitment and quality before it's listed, so
+          you can order with confidence. Our team is on hand to help you find the right part
+          for your make and model, whether it's a routine service item or a critical repair.
         </p>
       </div>
     </div>
