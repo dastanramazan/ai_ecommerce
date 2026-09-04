@@ -24,7 +24,8 @@
     color: #f5f5f7;
     font-size: 15px;
     font-weight: 600;
-    letter-spacing: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 .nav-menu{
     display: flex;

@@ -18,6 +18,8 @@
     color: var(--text-primary);
     font-size: 15px;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 .footer-logo img{
     width: 22px;
