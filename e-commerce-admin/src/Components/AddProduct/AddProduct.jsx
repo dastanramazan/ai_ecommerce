@@ -11,6 +11,7 @@ const AddProduct = () => {
       name:"",
       image:"",
       category:"brakes",
+      description:"",
       new_price:"",
       old_price:""
   });
@@ -82,7 +83,11 @@ const AddProduct = () => {
           <option value="brakes">Brakes</option>
           <option value="engine">Engine</option>
           <option value="fluids">Fluids</option>
-        </select> 
+        </select>
+      </div>
+      <div className="addproduct-itemfield">
+        <p>Description</p>
+        <textarea name="description" value={productDetails.description} onChange={(e)=>{changeHandler(e)}} placeholder="What makes this part worth buying?" rows={4} />
       </div>
       <div className="addproduct-itemfield">
         <p>Product title</p>

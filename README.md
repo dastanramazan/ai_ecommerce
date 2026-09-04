@@ -1,64 +1,84 @@
-# AI-Integrated E-Commerce Website
+# Alpha Wolf Parts
 
-## Project Overview
-This project is an AI-powered **e-commerce website/application** specializing in car parts shopping. The platform enhances the user experience by integrating artificial intelligence for **personalized recommendations and chatbot assistance**. It aims to streamline the shopping process, making it more efficient and user-friendly.
+An AI-assisted e-commerce site for car parts - brakes, engine components, and fluids from brands like Brembo, Duralast, Mobil 1, and Bosch. Shoppers get an AI Parts Helper to find the right fit; store owners get an admin panel to manage the catalog.
+
+## Project Structure
+
+This repo has three independent apps:
+
+| Folder | What it is | Default port |
+|---|---|---|
+| `e-commerce-frontend` | Customer-facing storefront (React) | 3000 |
+| `e-commerce-admin` | Admin panel for managing products (React) | 3000 (set `PORT` to run alongside the storefront) |
+| `e-commerce-backend` | REST API (Express + MongoDB) | 4000 |
 
 ## Features
-- **Product Listings** – Displays detailed car part information, specifications, and high-quality images.
-- **Shopping Cart** – User-friendly system for adding and managing products.
-- **User Authentication** – Secure login and signup functionality.
-- **Admin Panel** – Interface for managing products and users.
-- **AI-Driven Recommendations** – Personalized suggestions based on user preferences.
-- **AI Chatbot** – Provides customer support by answering product-related queries.
+
+- **Product catalog** with category browsing (Brakes / Engine / Fluids), pagination, and a real product page per item
+- **Shopping cart** with persistent, per-user cart data
+- **Authentication** with bcrypt-hashed passwords and JWT sessions
+- **Admin panel** with its own login, gated behind an `isAdmin` flag - add products (with images and descriptions), list and remove products
+- **AI Parts Helper** - a chat widget backed by Google Gemini, proxied through the backend so the API key never reaches the browser
+- **Input validation** and a centralized error format on every API route
 
 ## Tech Stack
-### Frontend:
-- **React** – For building an interactive and dynamic UI.
 
-### Backend:
-- **Node.js & Express.js** – For handling server-side logic and API requests.
-
-### Database:
-- **MongoDB** – For storing product data, user details, and orders.
-
-### AI Integration:
-- **Google AI Gemini APIs** – Powering the recommendation engine and chatbot.
-- **Google AI Studio** – Used for prototyping and fine-tuning AI models.
-
-### Development Tools:
-- **VSCode** – Code editor.
-- **Git & Linux** – Version control and deployment.
+- **Frontend & Admin:** React (Create React App), React Router
+- **Backend:** Node.js, Express, Mongoose
+- **Database:** MongoDB
+- **Auth:** bcrypt password hashing, JSON Web Tokens
+- **AI:** Google Gemini API (`@google/generative-ai`), called server-side only
 
 ## Setup & Installation
-1. **Clone the Repository:**
-   ```sh
-   git clone https://github.com/dastanramazan/ai_ecommerce.git
-   cd ai_ecommerce
-   ```
-2. **Install Dependencies:**
-   ```sh
-   npm install
-   ```
-3. **Run the Backend Server:**
-   ```sh
-   node server.js
-   ```
-4. **Start the Frontend:**
-   ```sh
-   npm start
-   ```
-5. **Environment Variables:**
-   - Ensure you configure API keys for AI integration in an `.env` file.
 
-## Challenges & Future Improvements
-### Challenges:
-- AI-generated recommendations need optimization.
-- The chatbot's accuracy and reliability can be improved.
+### 1. Clone the repository
+```sh
+git clone https://github.com/dastanramazan/ai_ecommerce.git
+cd ai_ecommerce
+```
 
-### Future Plans:
-- Enhancing AI performance for better user experience.
-- Implementing more AI-driven features such as **dynamic pricing and advanced search**.
+### 2. Backend
+```sh
+cd e-commerce-backend
+npm install
+cp .env.example .env   # fill in MONGODB_URI, JWT_SECRET, GEMINI_API_KEY
+npm start
+```
+The API runs on `http://localhost:4000`.
+
+To create an admin account (needed to log into the admin panel):
+```sh
+ADMIN_EMAIL=you@example.com ADMIN_PASSWORD=your-password npm run create-admin
+```
+
+### 3. Storefront
+```sh
+cd e-commerce-frontend
+npm install
+cp .env.example .env   # REACT_APP_API_URL, defaults to http://localhost:4000
+npm start
+```
+
+### 4. Admin panel
+```sh
+cd e-commerce-admin
+npm install
+cp .env.example .env
+PORT=3001 npm start
+```
+Log in with the account created by `create-admin` above.
+
+## Environment Variables
+
+Each app has its own `.env.example` listing what it needs. None of the real `.env` files are committed - if you're setting this up fresh, you'll need your own MongoDB connection string and Gemini API key.
+
+## Future Plans
+
+- Move product images off local disk storage to a hosted service (Cloudinary/S3)
+- Real checkout / payment integration
+- Broader admin tooling (edit existing products, order management)
 
 ## Author
-- **Dastan Ramazan**  
+
+- **Dastan Ramazan**
 - [GitHub Repository](https://github.com/dastanramazan/ai_ecommerce)

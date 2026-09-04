@@ -1,6 +1,6 @@
 {
-  "short_name": "Car Parts Shop",
-  "name": "Car Parts Shop",
+  "short_name": "Alpha Wolf Parts",
+  "name": "Alpha Wolf Parts",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#1d1d1f",
   "background_color": "#ffffff"
 }

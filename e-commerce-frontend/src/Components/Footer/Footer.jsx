@@ -11,7 +11,7 @@ const Footer = () => {
     <div className='footer'>
       <div className="footer-logo">
         <img src={footer_logo} alt="" />
-        <p>CAR PARTS</p>
+        <p>Alpha Wolf Parts</p>
       </div>
       <ul className="footer_links">
         <li>Company</li>
@@ -32,7 +32,7 @@ const Footer = () => {
       </div>
       <div className="footer_copyright">
         <hr />
-        <p>Copyright @ 2024 - All Rights Reserved.</p>
+        <p>Copyright &copy; {new Date().getFullYear()} Alpha Wolf Parts. All Rights Reserved.</p>
       </div>
     </div>
   )

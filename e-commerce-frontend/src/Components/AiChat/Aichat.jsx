@@ -37,7 +37,7 @@ function Aichat() {
 
   return (
     <div className="App">
-      <h1>Car Parts AI Helper</h1>
+      <h1>Ask the Alpha Wolf Parts Helper</h1>
       <div className="conversation" ref={conversationContainerRef}> {/* Add ref to container */}
         {conversation.map((message, index) => (
           <div key={index} className={`message ${message.role}`}>
