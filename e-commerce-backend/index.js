@@ -195,6 +195,19 @@ const Order = mongoose.model("Order", {
   }
 });
 
+// Schema for newsletter subscribers
+const Subscriber = mongoose.model("Subscriber", {
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 app.get("/", (req, res) => {
   res.send("Root");
 });
@@ -423,6 +436,21 @@ app.get('/my-orders', fetchuser, asyncHandler(async (req, res) => {
   const orders = await Order.find({userId: req.user.id}).sort({orderDate: -1});
   res.json(orders);
 }))
+
+// Newsletter signup
+app.post('/subscribe',
+  body('email').isEmail().withMessage('A valid email is required'),
+  handleValidation,
+  asyncHandler(async (req, res) => {
+    const email = req.body.email.toLowerCase().trim();
+    const existing = await Subscriber.findOne({ email });
+    if (existing) {
+      return res.json({ success: true, alreadySubscribed: true });
+    }
+    await Subscriber.create({ email });
+    res.json({ success: true, alreadySubscribed: false });
+  })
+)
 
 // AI chatbot: kept server-side so the Gemini API key never reaches the browser.
 const CHAT_MODEL_NAME = "gemini-1.5-pro-latest";

@@ -1,11 +1,23 @@
 import React, { useContext } from "react";
 import "./CartItems.css";
-import { FiX } from "react-icons/fi";
+import { FiX, FiShoppingBag } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
 
 const CartItems = () => {
   const {products} = useContext(ShopContext);
-  const {cartItems,removeFromCart,getTotalCartAmount} = useContext(ShopContext);
+  const {cartItems,removeFromCart,getTotalCartAmount,getTotalCartItems} = useContext(ShopContext);
+
+  if (getTotalCartItems() === 0) {
+    return (
+      <div className="cart_items_empty">
+        <FiShoppingBag />
+        <h2>Your cart is empty</h2>
+        <p>Looks like you haven't added any parts yet.</p>
+        <Link to="/" className="cart_items_empty_link">Start Shopping &gt;</Link>
+      </div>
+    );
+  }
 
   return (
     <div className="cart_items">

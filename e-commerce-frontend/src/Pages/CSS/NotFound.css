@@ -1,0 +1,27 @@
+.not-found{
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 6%;
+}
+.not-found h1{
+    font-size: 96px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+.not-found p{
+    color: var(--text-secondary);
+    font-size: 18px;
+    margin: 12px 0 24px;
+}
+.not-found-link{
+    color: var(--accent);
+    font-size: 17px;
+}
+.not-found-link:hover{
+    text-decoration: underline;
+}

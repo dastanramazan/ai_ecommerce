@@ -10,6 +10,8 @@ import banner_2 from "./Components/Assets/banners/Car-parts.jpg";
 import banner_3 from "./Components/Assets/banners/Various-Car-Parts.jpeg";
 import LoginSignup from "./Pages/LoginSignup";
 import Aichat from "./Components/AiChat/Aichat";
+import NotFound from "./Pages/NotFound";
+import Toast from "./Components/Toast/Toast";
 
 function App() {
 
@@ -28,8 +30,10 @@ function App() {
           </Route>
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<LoginSignup/>} />
+          <Route path="*" element={<NotFound/>} />
         </Routes>
         <Footer />
+        <Toast />
       </Router>
     </div>
   );
