@@ -5,9 +5,9 @@ import Cart from "./Pages/Cart";
 import Product from "./Pages/Product";
 import Footer from "./Components/Footer/Footer";
 import ShopCategory from "./Pages/ShopCategory";
-import banner_1 from "./Components/Assets/banners/Car-Parts-scaled.jpg";
-import banner_2 from "./Components/Assets/banners/Car-parts.jpg";
-import banner_3 from "./Components/Assets/banners/Various-Car-Parts.jpeg";
+import banner_1 from "./Components/Assets/banners/brake-rotor.jpg";
+import banner_2 from "./Components/Assets/banners/engine-bay.jpg";
+import banner_3 from "./Components/Assets/banners/oil-change.jpg";
 import LoginSignup from "./Pages/LoginSignup";
 import Aichat from "./Components/AiChat/Aichat";
 import NotFound from "./Pages/NotFound";
@@ -23,9 +23,9 @@ function App() {
         <PageTransition renderRoutes={(loc) => (
           <Routes location={loc}>
             <Route path="/" element={<Shop gender="all" />} />
-            <Route path="/brakes" element={<ShopCategory banner={banner_1} category="brakes" />} />
-            <Route path="/engine" element={<ShopCategory banner={banner_2} category="engine" />} />
-            <Route path="/fluids" element={<ShopCategory banner={banner_3} category="fluids" />} />
+            <Route path="/brakes" element={<ShopCategory banner={banner_1} category="brakes" bannerAlt="Close-up of a car brake disc and caliper" />} />
+            <Route path="/engine" element={<ShopCategory banner={banner_2} category="engine" bannerAlt="Close-up of a car engine bay" />} />
+            <Route path="/fluids" element={<ShopCategory banner={banner_3} category="fluids" bannerAlt="Mechanic pouring engine oil into a car" />} />
             <Route path="/aichat" element={<Aichat/>} />
             <Route path='/product' element={<Product />}>
               <Route path=':productId' element={<Product />} />
