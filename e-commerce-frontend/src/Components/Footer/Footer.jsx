@@ -1,5 +1,6 @@
 import React from 'react'
 import './Footer.css'
+import { Link } from 'react-router-dom'
 
 import footer_logo from '../Assets/logo_wolf.png'
 import instagram_icon from '../Assets/instagram_icon.png'
@@ -14,10 +15,9 @@ const Footer = () => {
         <p>Alpha Wolf Parts</p>
       </div>
       <ul className="footer_links">
-        <li>Company</li>
-        <li>Parts</li>
-        <li>About</li>
-        <li>Contacts</li>
+        <li><Link to="/">Parts</Link></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="https://wa.me/8329831919" target="_blank" rel="noopener noreferrer">Contacts</a></li>
       </ul>
       <div className="footer_social_icons">
         <div className="footer_icons_container">
