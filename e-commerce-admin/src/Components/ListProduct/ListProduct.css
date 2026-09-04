@@ -70,3 +70,20 @@
     height: 60px;
 }
 }
+@media(max-width:600px){
+  .listproduct {
+    padding: 10px 15px;
+  }
+  .listproduct-format-main:not(.listproduct-format){
+    display: none;
+  }
+  .listproduct-format-main.listproduct-format{
+    grid-template-columns: 1fr 2fr 1fr;
+    row-gap: 8px;
+    padding: 12px 0;
+    font-size: 12px;
+  }
+  .listproduct-product-icon{
+    height: 45px;
+  }
+}

@@ -78,5 +78,17 @@
     }
     .offers{
         padding: 50px 8%;
+        margin: 60px auto;
+        text-align: center;
+        justify-content: center;
+    }
+}
+@media(max-width:500px){
+    .offers-left h1{
+        font-size: 30px;
+    }
+    .offers{
+        margin: 40px auto;
+        padding: 40px 6%;
     }
 }

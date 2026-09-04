@@ -95,7 +95,8 @@
 }
 @media(max-width:500px){
     .news_letter{
-        padding: 50px 5%;
+        padding: 40px 6%;
+        margin-bottom: 60px;
     }
     .news_letter div{
         width: 100%;

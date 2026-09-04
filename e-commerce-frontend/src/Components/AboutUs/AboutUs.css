@@ -23,3 +23,14 @@
     line-height: 1.6;
     margin-bottom: 16px;
 }
+@media(max-width: 600px){
+    .about_us{
+        margin-top: 60px;
+    }
+    .about_us h2{
+        font-size: 26px;
+    }
+    .about_us p{
+        font-size: 15px;
+    }
+}
