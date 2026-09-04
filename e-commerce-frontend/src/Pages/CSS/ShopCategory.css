@@ -12,10 +12,14 @@
     color: var(--text-secondary);
 }
 .shopcategory-sort{
+    display: flex;
+    align-items: center;
+    gap: 6px;
     padding: 8px 18px;
     border-radius: var(--radius-pill);
     border: 1px solid var(--divider);
     color: var(--text-primary);
+    cursor: pointer;
 }
 .shopcategory-indexSort p span{
     font-weight: 600;

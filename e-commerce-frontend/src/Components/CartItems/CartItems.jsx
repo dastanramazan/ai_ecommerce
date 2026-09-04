@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./CartItems.css";
-import cross_icon from "../Assets/cart_cross_icon.png";
+import { FiX } from "react-icons/fi";
 import { ShopContext } from "../../Context/ShopContext";
 
 const CartItems = () => {
@@ -22,21 +22,21 @@ const CartItems = () => {
 
         if(cartItems[e.id]>0)
         {
-          return  <div>
+          return  <div key={e.id}>
                     <div className="cart_items_format_main cart_items_format">
                       <img className="cart_items_product_icon" src={e.image} alt="" />
-                      <p cartitems-product-title>{e.name}</p>
+                      <p className="cartitems-product-title">{e.name}</p>
                       <p>${e.new_price}</p>
                       <button className="cart_items_quantity">{cartItems[e.id]}</button>
                       <p>${e.new_price*cartItems[e.id]}</p>
-                      <img onClick={()=>{removeFromCart(e.id)}} className="cart_items_remove_icon" src={cross_icon} alt="" />
+                      <FiX onClick={()=>{removeFromCart(e.id)}} className="cart_items_remove_icon" />
                     </div>
                      <hr />
                   </div>;
         }
         return null;
       })}
-      
+
       <div className="cart_items_down">
         <div className="cart_items_total">
           <h1>Cart Totals</h1>

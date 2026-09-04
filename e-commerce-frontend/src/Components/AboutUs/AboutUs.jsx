@@ -1,10 +1,11 @@
 import React from 'react'
 import './AboutUs.css'
 import logo from '../Assets/logo_wolf.png'
+import FadeIn from '../FadeIn/FadeIn'
 
 const AboutUs = () => {
   return (
-    <div id="about" className="about_us">
+    <FadeIn id="about" className="about_us">
       <img src={logo} alt="Alpha Wolf Parts" className="about_us_logo" />
       <h2>About Alpha Wolf Parts</h2>
       <p>
@@ -17,7 +18,7 @@ const AboutUs = () => {
         Not sure what you need? Our AI Parts Helper can walk you through it in a couple of
         questions, and our team is always a WhatsApp message away.
       </p>
-    </div>
+    </FadeIn>
   )
 }
 

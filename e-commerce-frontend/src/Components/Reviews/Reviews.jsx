@@ -1,34 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { AiFillStar } from "react-icons/ai";
 import "./Reviews.css";
-
-const LeftArrowIcon = () => (
-	<svg
-		width="28"
-		height="28"
-		fill="none"
-		stroke="#1d1d1f"
-		strokeWidth="2"
-		viewBox="0 0 24 24"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-	>
-		<path d="M15 19l-7-7 7-7" />
-	</svg>
-);
-const RightArrowIcon = () => (
-	<svg
-		width="28"
-		height="28"
-		fill="none"
-		stroke="#1d1d1f"
-		strokeWidth="2"
-		viewBox="0 0 24 24"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-	>
-		<path d="M9 5l7 7-7 7" />
-	</svg>
-);
+import FadeIn from "../FadeIn/FadeIn";
 
 const reviewsData = [
 	{
@@ -78,7 +52,7 @@ const Reviews = () => {
 	}, [startIdx]);
 
 	return (
-		<section className="reviews_section">
+		<FadeIn as="section" className="reviews_section">
 			<h2 className="reviews_title">What Our Customers Say</h2>
 			<div className="reviews_carousel">
 				<button
@@ -86,14 +60,14 @@ const Reviews = () => {
 					onClick={handlePrev}
 					aria-label="Previous reviews"
 				>
-					<LeftArrowIcon />
+					<FiChevronLeft />
 				</button>
 				<div className="reviews_list">
 					{visibleReviews.map((review, idx) => (
 						<div className="review_card" key={idx}>
 							<div className="review_rating">
 								{Array.from({ length: review.rating }).map((_, i) => (
-									<span key={i}>⭐</span>
+									<AiFillStar key={i} />
 								))}
 							</div>
 							<p className="review_text">“{review.text}”</p>
@@ -106,10 +80,10 @@ const Reviews = () => {
 					onClick={handleNext}
 					aria-label="Next reviews"
 				>
-					<RightArrowIcon />
+					<FiChevronRight />
 				</button>
 			</div>
-		</section>
+		</FadeIn>
 	);
 };
 

@@ -28,16 +28,21 @@
     border-radius: 8px;
 }
 .cart_items_remove_icon{
-    width: 12px;
+    font-size: 16px;
+    color: var(--text-secondary);
     margin: 0px 30px;
     cursor: pointer;
+    transition: color var(--transition-fast);
+}
+.cart_items_remove_icon:hover{
+    color: var(--accent);
 }
 .cart_items_quantity{
     width: 55px;
     height: 40px;
     border: 1px solid var(--divider);
     border-radius: 8px;
-    background: #fff;
+    background: var(--bg-page);
     color: var(--text-primary);
 }
 .cart_items_down{

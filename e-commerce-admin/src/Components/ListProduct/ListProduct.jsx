@@ -58,7 +58,7 @@ const ListProduct = () => {
             <div key={e.id}>
               <div className="listproduct-format-main listproduct-format">
                 <img className="listproduct-product-icon" src={e.image} alt="" />
-                <p cartitems-product-title>{e.name}</p>
+                <p className="cartitems-product-title">{e.name}</p>
                 <p>${e.old_price}</p>
                 <p>${e.new_price}</p>
                 <p>{e.category}</p>
