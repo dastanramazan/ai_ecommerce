@@ -106,12 +106,21 @@
     border-radius: 50%;
     display: flex;
     justify-content: center;
+    transition: transform 0.2s ease;
     align-items: center;
     margin-top: -26px;
     margin-left: -32px;
     font-size: 10px;
     background: var(--accent);
     color: white;
+}
+.nav-cart-count-pop{
+    animation: cart-pop 0.3s ease;
+}
+@keyframes cart-pop{
+    0%{ transform: scale(1); }
+    40%{ transform: scale(1.5); }
+    100%{ transform: scale(1); }
 }
 .nav-dropdown{
     display: none;
@@ -143,7 +152,7 @@
         transition: transform 0.35s;
     }
     .nav-menu{
-        display: none;
+        display: flex;
         height: 60px;
         width: 100%;
         position: absolute;
@@ -153,9 +162,17 @@
         justify-content: center;
         top: var(--nav-height);
         left: 0;
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        visibility: hidden;
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
     }
     .nav-menu-visible{
-        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        visibility: visible;
     }
     .nav-dropdown.open{
         transform: rotate(180deg);
