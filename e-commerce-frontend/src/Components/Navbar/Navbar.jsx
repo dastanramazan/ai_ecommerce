@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
 import { FiShoppingCart, FiChevronDown } from 'react-icons/fi'
@@ -10,6 +10,19 @@ const Navbar = () => {
 
   let [menu,setMenu] = useState("shop");
   const {getTotalCartItems} = useContext(ShopContext);
+  const cartCount = getTotalCartItems();
+  const [pop, setPop] = useState(false);
+  const prevCountRef = useRef(cartCount);
+
+  useEffect(() => {
+    if (cartCount > prevCountRef.current) {
+      setPop(true);
+      const timeout = setTimeout(() => setPop(false), 300);
+      prevCountRef.current = cartCount;
+      return () => clearTimeout(timeout);
+    }
+    prevCountRef.current = cartCount;
+  }, [cartCount]);
 
   const menuRef = useRef();
 
@@ -37,7 +50,7 @@ const Navbar = () => {
         ?<button onClick={()=>{localStorage.removeItem('auth-token');window.location.replace("/");}}>Logout</button>
         :<Link to='/login' style={{ textDecoration: 'none' }}><button>Login</button></Link>}
         <Link to="/cart" className="nav-cart-link"><FiShoppingCart /></Link>
-        <div className="nav-cart-count">{getTotalCartItems()}</div>
+        <div className={`nav-cart-count ${pop ? 'nav-cart-count-pop' : ''}`}>{cartCount}</div>
       </div>
     </div>
   )

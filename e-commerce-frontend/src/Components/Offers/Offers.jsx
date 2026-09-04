@@ -1,6 +1,6 @@
 import React from "react";
 import "./Offers.css";
-import offer_image from "../Assets/banners/People-packing.jpg";
+import offer_image from "../Assets/banners/mechanic-engine.jpg";
 import FadeIn from "../FadeIn/FadeIn";
 
 const Offers = () => {
@@ -13,7 +13,7 @@ const Offers = () => {
         <button>Check now</button>
       </div>
       <div className="offers-right">
-        <img src={offer_image} alt="" />
+        <img src={offer_image} alt="Mechanic working on a car engine with a wrench" />
       </div>
     </FadeIn>
   );

@@ -55,4 +55,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+button{
+  transition: transform 0.15s ease, background 0.2s ease, opacity 0.2s ease;
+}
+button:active{
+  transform: scale(0.96);
+}
+@media (prefers-reduced-motion: reduce){
+  button:active{
+    transform: none;
+  }
+}
 

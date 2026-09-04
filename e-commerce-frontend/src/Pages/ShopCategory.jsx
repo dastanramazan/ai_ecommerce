@@ -55,7 +55,7 @@ const ShopCategory = (props) => {
 
   return (
     <div className="shopcategory">
-      <img src={props.banner} className="shopcategory-banner" alt="" />
+      <img src={props.banner} className="shopcategory-banner" alt={props.bannerAlt || `${props.category} parts`} />
       <div className="shopcategory-indexSort">
         <p><span>Showing 1 - {showingCount}</span> out of {total} Products</p>
         <div className="shopcategory-sort">
