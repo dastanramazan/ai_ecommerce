@@ -273,9 +273,33 @@ app.post('/signup',
 )
 
 app.get("/allproducts", asyncHandler(async (req, res) => {
-	let products = await Product.find({});
-  console.log("All Products");
-    res.send(products);
+  const filter = {};
+  if (req.query.category) {
+    filter.category = req.query.category;
+  }
+
+  // No page/limit given: keep the old behavior (full array) so existing
+  // callers that need the whole catalog (e.g. cart price lookups) don't break.
+  if (!req.query.page && !req.query.limit) {
+    const products = await Product.find(filter).sort({ id: 1 });
+    return res.send(products);
+  }
+
+  const page = Math.max(parseInt(req.query.page, 10) || 1, 1);
+  const limit = Math.min(Math.max(parseInt(req.query.limit, 10) || 12, 1), 100);
+
+  const [products, total] = await Promise.all([
+    Product.find(filter).sort({ id: 1 }).skip((page - 1) * limit).limit(limit),
+    Product.countDocuments(filter),
+  ]);
+
+  res.json({
+    products,
+    page,
+    limit,
+    total,
+    totalPages: Math.max(Math.ceil(total / limit), 1),
+  });
 }));
 
 app.get("/newcollections", asyncHandler(async (req, res) => {

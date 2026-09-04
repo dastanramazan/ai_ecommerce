@@ -3,18 +3,27 @@ import "./ListProduct.css";
 import cross_icon from '../Assets/cross_icon.png'
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000";
+const PAGE_SIZE = 10;
 
 const ListProduct = () => {
-  const [allproducts, setAllProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [total, setTotal] = useState(0);
 
-  const fetchInfo = () => {
-    fetch(`${API_URL}/allproducts`)
-            .then((res) => res.json())
-            .then((data) => setAllProducts(data))
-    }
+  const fetchInfo = (pageToLoad) => {
+    fetch(`${API_URL}/allproducts?page=${pageToLoad}&limit=${PAGE_SIZE}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data.products);
+        setPage(data.page);
+        setTotalPages(data.totalPages);
+        setTotal(data.total);
+      })
+  }
 
     useEffect(() => {
-      fetchInfo();
+      fetchInfo(1);
     }, [])
 
     const removeProduct = async (id) => {
@@ -28,10 +37,7 @@ const ListProduct = () => {
       body: JSON.stringify({id:id}),
     })
 
-    fetch(`${API_URL}/allproducts`)
-    .then((res) => res.json())
-    .then((data) => setAllProducts(data))
-
+    fetchInfo(page)
     }
 
   return (
@@ -47,9 +53,9 @@ const ListProduct = () => {
         </div>
       <div className="listproduct-allproducts">
         <hr />
-        {allproducts.map((e) => {
+        {products.map((e) => {
           return (
-            <div>
+            <div key={e.id}>
               <div className="listproduct-format-main listproduct-format">
                 <img className="listproduct-product-icon" src={e.image} alt="" />
                 <p cartitems-product-title>{e.name}</p>
@@ -62,6 +68,11 @@ const ListProduct = () => {
             </div>
           );
         })}
+      </div>
+      <div className="listproduct-pagination">
+        <button disabled={page <= 1} onClick={() => fetchInfo(page - 1)}>Prev</button>
+        <span>Page {page} of {totalPages} ({total} products)</span>
+        <button disabled={page >= totalPages} onClick={() => fetchInfo(page + 1)}>Next</button>
       </div>
     </div>
   );
