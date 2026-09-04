@@ -2,6 +2,37 @@
     margin: 100px 10%;
     color: var(--text-primary);
 }
+.cart_items_empty{
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 6%;
+    color: var(--text-primary);
+}
+.cart_items_empty svg{
+    font-size: 48px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+.cart_items_empty h2{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.cart_items_empty p{
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+.cart_items_empty_link{
+    color: var(--accent);
+    font-size: 16px;
+}
+.cart_items_empty_link:hover{
+    text-decoration: underline;
+}
 .cart_items hr{
     height: 1px;
     background: var(--divider);
