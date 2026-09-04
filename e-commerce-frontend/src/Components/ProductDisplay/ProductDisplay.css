@@ -39,7 +39,11 @@
     align-items: center;
     margin-top: 10px;
     gap: 5px;
-    color: var(--text-secondary);
+    font-size: 16px;
+    color: var(--divider);
+}
+.product_display_right_stars .star-filled{
+    color: #ffb400;
     font-size: 14px;
 }
 .product_display_right_prices{

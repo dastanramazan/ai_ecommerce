@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "./ProductDisplay.css";
-import star_icon from "../Assets/star_icon.png";
-import star_dull_icon from "../Assets/star_dull_icon.png";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { ShopContext } from "../../Context/ShopContext";
 
 const ProductDisplay = (props) => {
@@ -20,11 +19,7 @@ const ProductDisplay = (props) => {
       <div className="product_display_right">
         <h1>{product.name}</h1>
         <div className="product_display_right_stars">
-          <img src={star_icon} alt="" />
-          <img src={star_icon} alt="" />
-          <img src={star_icon} alt="" />
-          <img src={star_icon} alt="" />
-          <img src={star_dull_icon} alt="" />
+          <AiFillStar className="star-filled" /><AiFillStar className="star-filled" /><AiFillStar className="star-filled" /><AiFillStar className="star-filled" /><AiOutlineStar />
           <p>(122)</p>
         </div>
         <div className="product_display_right_prices">

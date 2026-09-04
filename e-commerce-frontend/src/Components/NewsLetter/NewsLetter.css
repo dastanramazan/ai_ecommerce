@@ -30,7 +30,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: white;
+    background: var(--bg-page);
     width: 95%;
     max-width: 650px;
     height: 52px;

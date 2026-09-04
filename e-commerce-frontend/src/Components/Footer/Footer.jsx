@@ -1,11 +1,9 @@
 import React from 'react'
 import './Footer.css'
 import { Link } from 'react-router-dom'
+import { FaInstagram, FaPinterestP, FaWhatsapp } from 'react-icons/fa'
 
 import footer_logo from '../Assets/logo_wolf.png'
-import instagram_icon from '../Assets/instagram_icon.png'
-import pinterest_icon from '../Assets/pintester_icon.png'
-import whatsapp_icon from '../Assets/whatsapp_icon.png'
 
 const Footer = () => {
   return (
@@ -21,13 +19,13 @@ const Footer = () => {
       </ul>
       <div className="footer_social_icons">
         <div className="footer_icons_container">
-            <img src={instagram_icon} alt="" />
+            <FaInstagram />
         </div>
         <div className="footer_icons_container">
-            <img src={pinterest_icon} alt="" />
+            <FaPinterestP />
         </div>
         <div className="footer_icons_container">
-            <img src={whatsapp_icon} alt="" />
+            <FaWhatsapp />
         </div>
       </div>
       <div className="footer_copyright">

@@ -20,8 +20,13 @@
   gap: 1.5rem;
 }
 .reviews_arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: 1px solid var(--divider);
+  color: var(--text-primary);
+  font-size: 20px;
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 50%;

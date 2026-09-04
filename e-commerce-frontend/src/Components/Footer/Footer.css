@@ -46,14 +46,21 @@
     gap: 10px;
 }
 .footer_icons_container{
-    padding: 8px;
-    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--bg-page);
     border: 1px solid var(--divider);
     border-radius: 50%;
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
 }
-.footer_icons_container img{
-    width: 16px;
-    display: block;
+.footer_icons_container:hover{
+    color: var(--accent);
+    border-color: var(--accent);
 }
 .footer_copyright{
     display: flex;
