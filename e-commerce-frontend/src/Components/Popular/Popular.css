@@ -29,4 +29,7 @@
     .popular h1{
         font-size: 30px;
     }
+    .popular{
+        margin-top: 60px;
+    }
 }

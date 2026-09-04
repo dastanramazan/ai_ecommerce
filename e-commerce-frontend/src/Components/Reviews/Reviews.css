@@ -74,14 +74,31 @@
   .reviews_section {
     padding: 2rem 0 2.5rem 0;
   }
+  .reviews_carousel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "list list" "prev next";
+    row-gap: 1rem;
+    width: 90vw;
+  }
   .reviews_list {
+    grid-area: list;
     flex-direction: column;
     gap: 1rem;
   }
+  .reviews_arrow:first-of-type {
+    grid-area: prev;
+    justify-self: end;
+  }
+  .reviews_arrow:last-of-type {
+    grid-area: next;
+    justify-self: start;
+  }
   .review_card {
     min-width: 0;
-    width: 90vw;
-    max-width: 98vw;
+    width: 100%;
+    max-width: 100%;
     align-items: center;
+    text-align: center;
   }
 }

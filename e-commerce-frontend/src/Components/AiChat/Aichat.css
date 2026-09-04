@@ -5,13 +5,13 @@
     font-family: var(--font-system);
 
   }
-  .Aichat {
-
-    display: inline; /* Allow centering elements */
-    justify-content: center;
+  .App {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
-
+    padding: 0 6%;
+    box-sizing: border-box;
   }
 
   h1 {
@@ -27,15 +27,16 @@
   .conversation {
     display: flex;
     flex-direction: column;
-    width: 70%;
-    margin: 10px 0;
+    width: 100%;
+    max-width: 700px;
+    margin: 10px auto;
     border: 1px solid var(--divider);
     border-radius: var(--radius-card);
     padding: 10px;
     height: 400px;
-    margin-left: 200px;
     overflow-y: scroll; /* Enable scroll for long conversations */
     background-color: var(--bg-section);
+    box-sizing: border-box;
   }
 
   /* Message Styling (Base) */
@@ -67,9 +68,11 @@
   /* Input Field Styling */
   .input_message {
     display: block;
-    width: 70%;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 700px;
     height: 50px;
-    margin-left: 200px;
+    margin: 0 auto;
     border: 1px solid var(--divider);
     border-radius: var(--radius-pill);
     padding: 0 20px;
@@ -89,7 +92,6 @@
     padding: 10px 24px;
     border-radius: var(--radius-pill);
     cursor: pointer;
-    margin-left: 200px; /* Add margin for better separation */
     margin-top: 10px;
     margin-bottom: 50px;
     width: fit-content;
@@ -100,4 +102,17 @@
   /* Optional: Hover Effect for Button */
   .aichat_button:hover {
     background-color: var(--accent-hover);
+  }
+
+  @media(max-width: 600px){
+    h1{
+      font-size: 24px;
+      margin: 30px 0 15px;
+    }
+    .conversation{
+      height: 320px;
+    }
+    .message{
+      max-width: 90%;
+    }
   }
