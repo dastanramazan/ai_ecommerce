@@ -31,7 +31,7 @@ const ProductDisplay = (props) => {
           <div className="product_display_right_price_old">${product.old_price}</div>
           <div className="product_display_right_price_new">${product.new_price}</div>
         </div>        <div className="product_display_right_description">
-        A quality {product.category} part checked for fitment and reliability. Built to keep your vehicle running safely.
+        {product.description || `A quality ${product.category} part checked for fitment and reliability. Built to keep your vehicle running safely.`}
         </div>
 
         <button onClick={()=>{addToCart(product.id)}}>ADD TO CART</button>

@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <div className='nav'>
       <Link to='/' onClick={()=>{setMenu("shop")}} style={{ textDecoration: 'none' }} className="nav-logo">        <img src={logo} alt="logo" />
-        <p>CAR PARTS</p>
+        <p>Alpha Wolf Parts</p>
       </Link>
       <img onClick={dropdown_toggle} className='nav-dropdown' src={nav_dropdown} alt="" />      <ul ref={menuRef} className="nav-menu">
         <li onClick={()=>{setMenu("shop")}}><Link to='/' style={{ textDecoration: 'none' }}>Home</Link>{menu==="shop"?<hr/>:<></>}</li>
